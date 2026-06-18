@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OSINT WEDDING CTF — TayZ3r</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --g: #00ff88; --gd: #00cc66; --y: #ffdd00;
+      --r: #ff3355; --bg: #030d06; --border: #00ff8833;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--bg);
+      color: var(--g);
+      font-family: 'Share Tech Mono', monospace;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    body::before {
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:99;
+      background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px);
+    }
+    .wrap { max-width: 700px; width:100%; padding: 2rem; }
+
+    /* Header */
+    .hdr { text-align:center; margin-bottom:2rem; }
+    .hdr .icon { font-size:2.8rem; margin-bottom:.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{text-shadow:0 0 10px var(--g);} 50%{text-shadow:0 0 30px var(--g);} }
+    h1 { font-family:'Orbitron',sans-serif; font-size:1.5rem; font-weight:900; letter-spacing:.15em; text-shadow:0 0 18px var(--g); }
+    .sub { font-size:.7rem; letter-spacing:.2em; color:var(--gd); margin-top:.3rem; }
+
+    /* Terminal panel */
+    .panel { background:#050f08; border:1px solid var(--border); border-radius:4px; margin-bottom:1.5rem; box-shadow:0 0 18px #00ff8822; }
+    .pbar { background:#0a1a0e; border-bottom:1px solid var(--border); padding:.5rem 1rem; display:flex; align-items:center; gap:.5rem; font-size:.65rem; color:#336644; }
+    .dot { width:9px; height:9px; border-radius:50%; }
+    .pbody { padding:1.2rem 1.5rem; }
+    .l { font-size:.82rem; line-height:1.8; margin-bottom:.2rem; }
+    .l .p { color:#336644; } .l .c { color:#fff; } .l .o { color:var(--g); }
+    .l .y { color:var(--y); } .l .r { color:var(--r); } .l .d { color:#336644; }
+
+    /* Briefing box */
+    .brief { border:1px solid var(--y); border-radius:4px; padding:1.5rem; background:#080900; margin-bottom:1.5rem; box-shadow:0 0 20px #ffdd0015; }
+    .brief-title { font-family:'Orbitron',sans-serif; font-size:.7rem; letter-spacing:.25em; color:var(--y); margin-bottom:1rem; }
+    .brief-body { font-size:.83rem; line-height:1.9; color:#aaccaa; }
+    .brief-body strong { color:var(--g); }
+    .brief-body .target { color:var(--y); font-weight:bold; }
+
+    /* Steps */
+    .steps-title { font-size:.65rem; letter-spacing:.2em; color:#336644; margin-bottom:.8rem; }
+    .step { display:flex; gap:1rem; padding:.7rem 1rem; border-left:2px solid #003322; margin-bottom:.4rem; transition:border-color .2s; }
+    .step:hover { border-color:var(--g); }
+    .step-n { font-family:'Orbitron',sans-serif; font-size:.65rem; color:var(--gd); min-width:2rem; padding-top:.1rem; }
+    .step-t { font-size:.8rem; line-height:1.6; }
+    .step-t code { background:#0a1a0e; border:1px solid var(--border); padding:.1em .4em; border-radius:3px; color:var(--y); }
+    .step-t .plat { color:var(--g); }
+
+    /* Cursor */
+    .cur { display:inline-block; width:8px; height:1em; background:var(--g); vertical-align:middle; animation:blink 1s step-end infinite; }
+    @keyframes blink { 50%{opacity:0;} }
+
+    .footer { text-align:center; font-size:.6rem; color:#1a3322; letter-spacing:.12em; margin-top:2rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="icon">🕵️</div>
+    <h1>OSINT WEDDING CTF</h1>
+    <div class="sub">// CHALLENGE INITIÉ — BONNE CHANCE TayZ3r //</div>
+  </div>
+
+  <!-- Terminal boot -->
+  <div class="panel">
+    <div class="pbar">
+      <div class="dot" style="background:#ff5f56"></div>
+      <div class="dot" style="background:#ffbd2e"></div>
+      <div class="dot" style="background:#27c93f"></div>
+      <span>bash — tayz3r@wedding-ctf:~</span>
+    </div>
+    <div class="pbody">
+      <div class="l"><span class="p">root@ctf:~# </span><span class="c">cat /etc/motd</span></div>
+      <div class="l"><span class="o">╔══════════════════════════════════════════╗</span></div>
+      <div class="l"><span class="o">&emsp;Félicitations pour ton mariage TayZ3r 💍                     </span></div>
+      <div class="l"><span class="o">&emsp;Brice souhaitait te remettre une enveloppe,</span></div>
+      <div class="l"><span class="o">&emsp;mais elle a été volée et encoffrée.  </span></div>
+      <div class="l"><span class="o">&emsp;Il a trouvé le coffre, mais pas le code. </span></div>
+      <div class="l"><span class="o">&emsp;&emsp;&emsp;&emsp;&emsp;C'est à toi de le trouver.</span></div>
+      <div class="l"><span class="o">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Bon courage TayZ3r.</span></div>
+
+      <div class="l"><span class="o">╚══════════════════════════════════════════╝</span></div>
+      <br>
+      <div class="l"><span class="p">root@ctf:~# </span><span class="c">cat hint.txt</span></div>
+      <div class="l"><span class="y">Selon Brice, l'individu ayant encoffré l'enveloppe </span></div>
+      <div class="l"><span class="y">serait connu sous le pseudonyme "fuck_european" </span></div>
+      <div class="l"><span class="y">Il aurait semé des indices sur les réseaux. Retrouve-le.</span></div>
+      <div class="l"><span class="y">Le code du cadenas se cache certainement dans son sillage.</span></div>
+      <br>
+      <div class="l"><span class="p">root@ctf:~# </span><span class="cur"></span></div>
+    </div>
+  </div>
+
+  <!-- Briefing -->
+  <div class="brief">
+    <div class="brief-title">[ MISSION BRIEFING ]</div>
+    <div class="brief-body">
+      Un individu répondant au pseudo <span class="target">fuck_european</span> a été repéré sur plusieurs plateformes.
+      Il a volontairement laissé des traces pour être retrouvé.<br><br>
+      Ta mission : <strong>pivot de compte en compte</strong>, reconstitue son parcours
+      et récupère le <strong>code à 4 chiffres</strong> qu'il a dissimulé.<br><br>
+      Point d'entrée connu : <strong>Instagram</strong>.<br>
+      La suite... c'est ton job. 🔍
+    </div>
+  </div>
+
+  <!-- Étapes -->
+  <div class="steps-title">// MÉTHODOLOGIE SUGGÉRÉE //</div>
+  <div class="step">
+    <div class="step-n">01</div>
+    <div class="step-t">Commence par <span class="plat">Instagram</span> — cherche son profil dessus</div>
+  </div>
+  <div class="step">
+    <div class="step-n">02</div>
+    <div class="step-t">Chaque profil contient un indice vers le <strong>suivant</strong></div>
+  </div>
+  <div class="step">
+    <div class="step-n">03</div>
+    <div class="step-t">Le dernier profil contient le <span class="plat">code du cadenas</span></div>
+  </div>
+  <div class="step">
+    <div class="step-n">04</div>
+    <div class="step-t">Ouvre le cadenas 🔓 — ton enveloppe t'attend</div>
+  </div>
+
+  <div class="footer">WEDDING_CTF_2026 — OSINT CHALLENGE — TayZ3r // fuck_european is out there</div>
+</div>
+</body>
+</html>
